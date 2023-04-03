@@ -67,6 +67,7 @@ MIDDLEWARE = [
 
     'dwp_site.middleware.AuthenMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware', #dev
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dwp_site.urls'
@@ -147,6 +148,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media/'
