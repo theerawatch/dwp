@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y libpq-dev gcc
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+
 # Set the working directory to /app/src
 WORKDIR /app/src
+
+RUN python manage.py collectstatic --no-input
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
