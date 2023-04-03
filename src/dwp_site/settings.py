@@ -166,3 +166,7 @@ INTERNAL_IPS = [
 ]
 
 if DEBUG :NPM_BIN_PATH = r'C:\Program Files\nodejs\npm.cmd'
+
+if not DEBUG :CSRF_TRUSTED_ORIGINS = [
+    os.getenv('RENDER_EXTERNAL_URL')
+]
