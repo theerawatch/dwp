@@ -1,0 +1,110 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This website was made to showcase my skill in Django-web-practice."
+    />
+    <link rel="manifest" href="/static/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>DWP-HOME</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <div class="h-screen">
+      <div class="max-w-14 mx-auto flex flex-col h-full">
+        {% include 'user/header.html' %}
+        <div class="w-full p-6">
+          <div class="w-full h-full flex flex-col justify-center">
+            <div class="my-4 border-2 border-sky-900 w-full bg-sky-300">
+              <div class="py-2 px-4 border-b-2 border-sky-900 w-full">
+                <label>Account Information</label>
+              </div>
+              <div class="py-2 px-4 flex justify-between items-center">
+                <label>Username</label>
+                <div>
+                  <input
+                    name="username"
+                    type="email"
+                    class="form-control rounded-3"
+                    id="floatingInput"
+                    value="{{user.username}}"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="py-2 px-4 flex justify-between items-center">
+                <label>Email</label>
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    class="form-control rounded-3"
+                    id="floatingInput"
+                    value="{{user.email}}"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            <form
+              action="/u/profile/"
+              name="update-profile-form"
+              id="update-profile-form"
+              method="post"
+            >
+              {% csrf_token %}
+              <div class="my-4 border-2 border-sky-900 w-full bg-sky-300">
+                <div
+                  class="py-2 px-4 border-b-2 border-sky-900 w-full flex justify-between items-center"
+                >
+                  <label>Profile</label>
+                  {% if firstname or lastname%}
+                  <button class="w-100 px-4 bg-sky-200">Cancel</button>
+                  {% endif %}
+                  <button
+                    class="w-100 px-4 bg-sky-200"
+                    type="submit"
+                    form="update-profile-form"
+                  >
+                    Save
+                  </button>
+                </div>
+                <div class="py-2 px-4 flex justify-between items-center">
+                  <label>First name</label>
+                  <div>
+                    <input
+                      name="firstname"
+                      type="text"
+                      class="form-control rounded-3"
+                      value="{{user.first_name}}"
+                    />
+                  </div>
+                </div>
+                <div class="py-2 px-4 flex justify-between items-center">
+                  <label>Last name</label>
+                  <div>
+                    <input
+                      name="lastname"
+                      type="text"
+                      class="form-control rounded-3"
+                      value="{{user.last_name}}"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mt-auto">{% include 'footer.html' %}</div>
+      </div>
+    </div>
+  </body>
+</html>
