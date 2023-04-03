@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 
     'core',
     'dwp_survey',
-    'django_browser_reload', #dev
+    # 'django_browser_reload', #dev
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'dwp_site.middleware.AuthenMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware', #dev
+    # 'django_browser_reload.middleware.BrowserReloadMiddleware', #dev
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
