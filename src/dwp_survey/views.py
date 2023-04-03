@@ -33,8 +33,20 @@ def logout(request):
 
 def register(request):
     if request.method == 'POST':
+        
         username = request.POST['username']
         email = request.POST['email']
+        try:
+            us = User.objects.get(username=username)
+            if us is not None:
+                return render(request,'guest/register.html')
+            us = User.objects.get(email=email)
+            if us is not None:
+                return render(request,'guest/register.html')
+        except:
+            pass
+
+        
         password = request.POST['password']
         passwordHash = pw.GeneratePassword(password)
         us = User.objects.create_user(username,email,passwordHash)
